@@ -1,7 +1,9 @@
 import {
+  Box,
   Button,
   FormControl,
   FormErrorMessage,
+  Heading,
   Input,
   InputGroup,
   InputRightElement,
@@ -35,7 +37,10 @@ export const Search = ({ query, type }: ISearchProps) => {
   };
 
   return (
-    <>
+    <Box mx="auto" my="5" maxW="3xl">
+      <Heading my={3} size="xl">
+        Search for ingredients
+      </Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputGroup size="md">
           <Controller
@@ -65,6 +70,6 @@ export const Search = ({ query, type }: ISearchProps) => {
           </InputRightElement>
         </InputGroup>
       </form>
-    </>
+    </Box>
   );
 };

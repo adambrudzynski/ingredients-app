@@ -44,12 +44,12 @@ export const Pagination = ({
   }
 
   return (
-    <Box>
-      <Flex>
+    <Box my={5}>
+      <Flex justify="center" gap={2}>
         <Button onClick={prevPage} disabled={offset === 0}>
           Previous
         </Button>
-        <Text>
+        <Text fontSize="xl">
           page {currentPage} of {totalPages}
         </Text>
         <Button
