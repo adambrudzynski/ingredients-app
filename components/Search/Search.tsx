@@ -8,6 +8,8 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { Endpoints } from "../../constants";
+import { useLocalStorageHistory } from "../../hooks";
 
 interface IFormInput {
   query: string;
@@ -15,18 +17,21 @@ interface IFormInput {
 
 interface ISearchProps {
   query?: string;
+  type: Endpoints.ingredients;
 }
 
-export const Search = ({ query }: ISearchProps) => {
+export const Search = ({ query, type }: ISearchProps) => {
   const {
     control,
     handleSubmit,
     formState: { isSubmitting },
   } = useForm<IFormInput>();
   const router = useRouter();
+  const { setHistory } = useLocalStorageHistory(type);
 
   const onSubmit: SubmitHandler<IFormInput> = ({ query }) => {
-    router.push({ pathname: "/ingredients", query: { query } });
+    router.push({ pathname: `/${type}`, query: { query } });
+    setHistory(query);
   };
 
   return (

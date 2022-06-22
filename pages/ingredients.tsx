@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import { Search, SearchResultsList } from "../components";
 import React from "react";
-import axios from "axios";
 import { IngredientSearchQuery, IngredientSearchResponse } from "../types";
 import { ParsedUrlQuery } from "querystring";
 import { ApiHelper } from "../helpers";
@@ -23,9 +22,8 @@ interface IngredientsSearch {
 const IngredientsSearch: NextPage<IngredientsSearch> = (props) => {
   return (
     <>
-      <Search query={props.query.query} />
+      <Search query={props.query.query} type={Endpoints.ingredients} />
       {props.results && <SearchResultsList results={props.results} />}
-      {JSON.stringify(props)}
     </>
   );
 };
