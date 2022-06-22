@@ -26,7 +26,7 @@ export const Search = ({ query }: ISearchProps) => {
   const router = useRouter();
 
   const onSubmit: SubmitHandler<IFormInput> = ({ query }) => {
-    router.push({ pathname: router.pathname, query: { query } });
+    router.push({ pathname: "/ingredients", query: { query } });
   };
 
   return (
@@ -35,8 +35,8 @@ export const Search = ({ query }: ISearchProps) => {
         <InputGroup size="md">
           <Controller
             name="query"
+            defaultValue={query || ""}
             control={control}
-            defaultValue=""
             render={({ field, fieldState }) => (
               <FormControl>
                 <Input

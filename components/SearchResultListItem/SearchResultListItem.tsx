@@ -1,18 +1,20 @@
 import { Box, Heading, Image } from "@chakra-ui/react";
+import { Endpoints } from "../../constants";
 import { IngredientSearchResult } from "../../types";
 
 interface ListItemProps {
   item: IngredientSearchResult;
+  type: Endpoints;
 }
 
-export const SearchResultListItem = ({ item }: ListItemProps) => {
+export const SearchResultListItem = ({ item, type }: ListItemProps) => {
   return (
     <Box w="xs" borderWidth="1px" borderRadius="lg">
-      <Heading as="h4" size="md" color={"gray.600"}>
+      <Heading m={4} as="h4" size="md" color={"gray.600"}>
         {item.name}
       </Heading>
       <Image
-        src={"https://spoonacular.com/cdn/ingredients_250x250/" + item.image}
+        src={`https://spoonacular.com/cdn/${type}_250x250/${item.image}`}
         alt={item.name}
       />
     </Box>
