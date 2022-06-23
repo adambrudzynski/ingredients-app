@@ -16,7 +16,9 @@ export const SearchHistory = ({ type }: SearchHistoryProps) => {
 
   return (
     <Box mx="auto" my="5" maxW="3xl">
-      <Heading size="lg" >Search history</Heading>
+      <Heading size="md">
+        {history?.length === 0 ? "Search history is empty" : "Search history"}
+      </Heading>
       <Flex wrap={"wrap"} gap={3}>
         {history &&
           history.map((entry, index) => (

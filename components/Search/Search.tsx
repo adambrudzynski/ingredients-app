@@ -36,6 +36,10 @@ export const Search = ({ query, type }: ISearchProps) => {
     setHistory(query);
   };
 
+  const clearInput = () => {
+    router.push("/");
+  };
+
   return (
     <Box mx="auto" my="5" maxW="3xl">
       <Heading my={3} size="xl">
@@ -58,7 +62,16 @@ export const Search = ({ query, type }: ISearchProps) => {
               </FormControl>
             )}
           />
-          <InputRightElement width="4.5rem">
+          <InputRightElement width="7.5rem">
+            <Button
+              mr={1}
+              h="1.75rem"
+              size="sm"
+              onClick={clearInput}
+              type="button"
+            >
+              X
+            </Button>
             <Button
               h="1.75rem"
               size="sm"

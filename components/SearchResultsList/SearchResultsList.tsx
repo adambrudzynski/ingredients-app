@@ -1,5 +1,5 @@
 import { Box, Flex, Heading } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+
 import { Endpoints } from "../../constants";
 import { IngredientSearchResponse } from "../../types";
 import { Pagination } from "../Pagination";
@@ -10,12 +10,12 @@ interface SearchResultsListProps {
 }
 
 export const SearchResultsList = ({ results }: SearchResultsListProps) => {
-  const router = useRouter();
-
   if (results.results.length === 0) {
     return (
-      <Box>
-        <Heading size="lg">No results for your query</Heading>
+      <Box mx="auto" my="5" maxW="3xl">
+        <Heading mx="auto" size="md">
+          No results for your query
+        </Heading>
       </Box>
     );
   }

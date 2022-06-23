@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { Search, SearchResultsList } from "../components";
+import { CommonError, Search, SearchResultsList } from "../components";
 import React from "react";
 import { IngredientSearchQuery, IngredientSearchResponse } from "../types";
 import { ParsedUrlQuery } from "querystring";
@@ -17,12 +17,14 @@ export const getServerSideProps = async ({ query }: Context) => {
 interface IngredientsSearch {
   query: IngredientSearchQuery;
   results: IngredientSearchResponse;
+  error?: string | object;
 }
 
 const IngredientsSearch: NextPage<IngredientsSearch> = (props) => {
   return (
     <>
       <Search query={props.query.query} type={Endpoints.ingredients} />
+      {props.error && <CommonError />}
       {props.results && <SearchResultsList results={props.results} />}
     </>
   );
